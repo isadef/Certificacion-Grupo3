@@ -9,8 +9,16 @@ public class MainMenu extends BasePage {
     @FindBy(xpath = "//a[@id='Report']")
     private WebElement reportsButton;
 
+    @FindBy(xpath = "//*[@id='settings']")
+    private WebElement accountSettingsButton;
+
     public ReportsPage clickReportsButton() {
         Events.click(reportsButton);
         return new ReportsPage();
+    }
+
+    public AccountSettingsPage clickAccountSettingsButton() {
+        Events.click(accountSettingsButton);
+        return new AccountSettingsPage();
     }
 }
