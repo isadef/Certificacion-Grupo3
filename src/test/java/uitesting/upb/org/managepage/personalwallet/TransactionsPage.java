@@ -38,6 +38,9 @@ public class TransactionsPage {
     @FindBy(xpath = "//*[@id='transactionSuccess']")
     private WebElement transactionSuccessAlert;
 
+    @FindBy(css = "#exit")
+    private WebElement exitButton;
+
     public boolean isTransactionFailAlertVisible() {
         transactionFailAlert = DriverManager.getInstance().waitForElement(By.xpath("//*[@id='transactionFail']"));
         return Events.isWebElementVisible(transactionFailAlert);
@@ -77,6 +80,11 @@ public class TransactionsPage {
         Events.fillField(transactionNameField, name);
         return this;
     }
+    public TransactionsPage fillIncomeNameField(String name) {
+        transactionNameField = DriverManager.getInstance().waitForElement(By.xpath("//*[@id='name']"));
+        Events.fillField(transactionNameField, name);
+        return this;
+    }
 
     public TransactionsPage clickCategoryButton() {
         catergoryButton = DriverManager.getInstance().waitForElement(By.xpath("//*[@id='buttonCategory']"));
@@ -98,5 +106,11 @@ public class TransactionsPage {
         categorySelector = DriverManager.getInstance().waitForElement(By.xpath("//*[@id='category']"));
         Events.fillField(categorySelector, category);
         return this;
+    }
+
+    public AccountHomeMenu clickExitButton() {
+        exitButton = DriverManager.getInstance().waitForElement(By.cssSelector("#exit"));
+        Events.click(exitButton);
+        return new AccountHomeMenu();
     }
 }
