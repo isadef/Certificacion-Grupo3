@@ -105,7 +105,7 @@ public class PersonalWalletSteps {
 
     @And("^We fill the 'income name' field with \"([^\"]*)\" on the Transactions page$")
     public void weFillTheIncomeNameFieldWithOnTheTransactionsPage(String name)  {
-        transactionsPage = transactionsPage.fillExpenseNameField(name);
+        transactionsPage = transactionsPage.fillIncomeNameField(name);
     }
 
     @Then("^Search the 'transaction success' alert on the Transactions page$")

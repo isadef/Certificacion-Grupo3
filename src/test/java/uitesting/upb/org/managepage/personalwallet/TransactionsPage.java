@@ -77,6 +77,11 @@ public class TransactionsPage {
         Events.fillField(transactionNameField, name);
         return this;
     }
+    public TransactionsPage fillIncomeNameField(String name) {
+        transactionNameField = DriverManager.getInstance().waitForElement(By.xpath("//*[@id='name']"));
+        Events.fillField(transactionNameField, name);
+        return this;
+    }
 
     public TransactionsPage clickCategoryButton() {
         catergoryButton = DriverManager.getInstance().waitForElement(By.xpath("//*[@id='buttonCategory']"));
