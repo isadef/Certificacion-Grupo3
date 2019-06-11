@@ -1,5 +1,6 @@
 package uitesting.upb.org.stepdefinitions;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -9,11 +10,13 @@ import uitesting.upb.org.handlewebsite.LoadPage;
 import uitesting.upb.org.managepage.personalwallet.AccountHomeMenu;
 import uitesting.upb.org.managepage.personalwallet.MainMenu;
 import uitesting.upb.org.managepage.personalwallet.ReportsPage;
+import uitesting.upb.org.managepage.personalwallet.TransactionsPage;
 
 public class PersonalWalletSteps {
     private AccountHomeMenu accountHomeMenu;
     private MainMenu mainMenu;
     private ReportsPage reportsPage;
+    private TransactionsPage transactionsPage;
 
     @Given("^The main page is loaded$")
     public void loadMainPage() {
@@ -59,4 +62,28 @@ public class PersonalWalletSteps {
     public void assertTableRows(int rows) {
         Assert.assertEquals(reportsPage.getNumberOfRows(), rows);
     }
+
+    @Given("^We clicked the 'Expenses' button on the main menu page$")
+    public void weClickedTheExpensesButtonOnTheMainMenuPage() { transactionsPage = mainMenu.clickExpensesButton(); }
+
+    @And("^We fill the 'category name' field with \"([^\"]*)\" on the Transactions page$")
+    public void weFillTheCategoryNameFieldWithOnTheTransactionsPage(String categoryName) { transactionsPage = transactionsPage.fillCategoryRegisterField(categoryName); }
+
+    @And("^We click the 'Register Category' button on the Transactions page$")
+    public void weClickTheRegisterCategoryButtonOnTheTransactionsPage() { transactionsPage = transactionsPage.clickCategoryButton(); }
+
+    @Then("^Search the 'category success' alert on the Transactions page$")
+    public void searchTheCategorySuccessAlertOnTheTransactionsPage() { Assert.assertTrue(transactionsPage.isCategorySuccessAlertVisible()); }
+
+    @And("^Search the category option \"([^\"]*)\" on the category selector on the Transactions page$")
+    public void searchTheCategoryOptionOnTheCategorySelectorOnTheTransactionsPage(String option) { Assert.assertTrue(transactionsPage.searchCategoryOnSelector(option)); }
+
+    @And("^We fill the 'expense name' field with \"([^\"]*)\" on the Transactions page$")
+    public void weFillTheExpenseNameFieldWithOnTheTransactionsPage(String name) { transactionsPage = transactionsPage.fillExpenseNameField(name); }
+
+    @And("^We select the \"([^\"]*)\" values on the category selector on the Transactions page$")
+    public void weSelectTheValuesOnTheCategorySelectorOnTheTransactionsPage(String category) { transactionsPage = transactionsPage.selectCastegort(category); }
+
+    @And("^We fill the 'AmountBS' field with \"([^\"]*)\" on the Transactions page$")
+    public void weFillTheAmountBSFieldWithOnTheTransactionsPage(String amount) { transactionsPage = transactionsPage.fillAmountField(amount); }
 }

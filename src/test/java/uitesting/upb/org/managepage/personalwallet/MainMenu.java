@@ -8,9 +8,16 @@ import uitesting.upb.org.managepage.BasePage;
 public class MainMenu extends BasePage {
     @FindBy(xpath = "//a[@id='Report']")
     private WebElement reportsButton;
+    @FindBy(xpath = "//*[@id='Expenses']")
+    private WebElement expensesButton;
 
     public ReportsPage clickReportsButton() {
         Events.click(reportsButton);
         return new ReportsPage();
+    }
+
+    public TransactionsPage clickExpensesButton() {
+        Events.click(expensesButton);
+        return new TransactionsPage();
     }
 }

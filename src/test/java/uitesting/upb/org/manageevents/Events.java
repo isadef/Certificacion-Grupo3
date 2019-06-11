@@ -1,6 +1,8 @@
 package uitesting.upb.org.manageevents;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import uitesting.upb.org.webdrivermanager.DriverManager;
@@ -21,6 +23,19 @@ public class Events {
     public static void fillField(WebElement searchTextField, String text) {
         searchTextField.sendKeys(text);
     }
+    public static void fillField(WebElement searchTextField, Number text) {
+
+    }
+
+    public static void fillNumberField(WebElement numberField, String number) {
+
+        numberField.click();
+        numberField.clear();
+
+        JavascriptExecutor jse = (JavascriptExecutor)DriverManager.getInstance().getWebDriver();
+        jse.executeScript("value="+number+";", numberField);
+
+    }
 
     public static WebElement GetWebElementById(String id) {
         return DriverManager.getInstance().getWebDriver().findElement(By.id(id));
@@ -37,4 +52,12 @@ public class Events {
         List<WebElement> webElements = DriverManager.getInstance().getWebDriver().findElements(By.xpath(xpathSelector));
         return webElements.size();
     }
+
+    public static boolean isElementOnSelector(WebElement selector, String element) {
+        WebElement option = selector.findElement(By.xpath("//option[contains(.," + element + ")]"));
+        if (option != null)
+        {return true;}
+        else {return false;}
+    }
+
 }

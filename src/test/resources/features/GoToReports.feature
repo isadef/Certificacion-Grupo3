@@ -11,8 +11,8 @@ Feature: Go to reports for new account
     Then The title is "Reports for: Test"
 
 #  Scenario: Check that the reports table is empty when there is no data for the account
-#    Given We clicked the "Test" button on the main page
-#    When We click 'Reports' button on the main menu page
-#    And We select 'By category' in the select option on the reports page
-#    And We click the 'Show report' button on the reports page
-#    Then The table has "0" rows
+###    Given We clicked the "Test" button on the main page
+###    When We click 'Reports' button on the main menu page
+###    And We select 'By category' in the select option on the reports page
+###    And We click the 'Show report' button on the reports page
+###    Then The table has "0" rows
