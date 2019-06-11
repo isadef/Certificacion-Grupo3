@@ -22,7 +22,7 @@ public class ReportsPage extends BasePage {
     }
 
     public ReportsPage selectByCategoryOption() {
-        Events.SelectOptionInSelect((Select)reportTypeSelect, "category");
+        Events.SelectOptionInSelect(new Select(reportTypeSelect), "category");
         return this;
     }
 

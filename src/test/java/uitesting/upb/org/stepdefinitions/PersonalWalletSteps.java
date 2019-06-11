@@ -60,9 +60,10 @@ public class PersonalWalletSteps {
         Assert.assertEquals(reportsPage.getTitle(), title);
     }
 
-    @Then("^The table has \"[0-9]+\" rows$")
-    public void assertTableRows(int rows) {
-        Assert.assertEquals(reportsPage.getNumberOfRows(), rows);
+    @Then("^The table has \"(.*)\" rows$")
+    public void assertTableRows(String rows) {
+        int numberOfRows = Integer.parseInt(rows);
+        Assert.assertEquals(reportsPage.getNumberOfRows(), numberOfRows);
     }
 
     @Given("^We clicked the 'Expenses' button on the main menu page$")
