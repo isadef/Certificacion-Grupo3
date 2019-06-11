@@ -27,4 +27,11 @@ public class AccountHomeMenu extends BasePage {
         Events.click(Events.GetWebElementById(id));
         return new MainMenu();
     }
+    public String getButtonNameById(String id) {
+        WebElement button = Events.GetWebElementById(id);
+        return button.getText();
+    }
+    public int getNumberOfButtons() {
+        return Events.GetNumberOfElements("//*[@id='app']/div/div[2]");
+    }
 }
