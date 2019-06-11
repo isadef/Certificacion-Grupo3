@@ -3,7 +3,6 @@ package uitesting.upb.org.managepage.personalwallet;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.Select;
 import uitesting.upb.org.manageevents.Events;
 import uitesting.upb.org.webdrivermanager.DriverManager;
 
@@ -22,7 +21,7 @@ public class TransactionsPage {
     private WebElement categorySelector;
 
     @FindBy(xpath = "//*[@id='name']")
-    private WebElement expenseNameField;
+    private WebElement transactionNameField;
 
     @FindBy(xpath = "//*[@id='amount']")
     private WebElement amountField;
@@ -74,8 +73,8 @@ public class TransactionsPage {
     }
 
     public TransactionsPage fillExpenseNameField(String name) {
-        expenseNameField = DriverManager.getInstance().waitForElement(By.xpath("//*[@id='name']"));
-        Events.fillField(expenseNameField, name);
+        transactionNameField = DriverManager.getInstance().waitForElement(By.xpath("//*[@id='name']"));
+        Events.fillField(transactionNameField, name);
         return this;
     }
 
