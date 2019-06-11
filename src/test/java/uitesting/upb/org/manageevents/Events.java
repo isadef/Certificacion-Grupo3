@@ -23,19 +23,6 @@ public class Events {
     public static void fillField(WebElement searchTextField, String text) {
         searchTextField.sendKeys(text);
     }
-    public static void fillField(WebElement searchTextField, Number text) {
-
-    }
-
-    public static void fillNumberField(WebElement numberField, String number) {
-
-        numberField.click();
-        numberField.clear();
-
-        JavascriptExecutor jse = (JavascriptExecutor)DriverManager.getInstance().getWebDriver();
-        jse.executeScript("value="+number+";", numberField);
-
-    }
 
     public static WebElement GetWebElementById(String id) {
         return DriverManager.getInstance().getWebDriver().findElement(By.id(id));

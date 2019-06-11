@@ -17,5 +17,6 @@ Feature: Manage Expenses
       And  We fill the 'expense name' field with "Prueba" on the Transactions page
       And We select the "Others" values on the category selector on the Transactions page
       And We fill the 'AmountBS' field with "100" on the Transactions page
-
-
+      And We fill the 'DateField' field with "23/05/2019" on the Transactions page
+      And We click the 'Register Transition' button on the Transaction page
+    Then Search the 'transaction fail' alert on the Transactions page

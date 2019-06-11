@@ -27,8 +27,35 @@ public class TransactionsPage {
     @FindBy(xpath = "//*[@id='amount']")
     private WebElement amountField;
 
+    @FindBy(xpath = "//*[@id='dateSpace']")
+    private WebElement dateField;
+
+    @FindBy(xpath = "//*[@id='buttonTransaction']")
+    private WebElement transactionButton;
+
+    @FindBy(xpath = "//*[@id='transactionFail']")
+    private WebElement transactionFailAlert;
+
+    public boolean isTransactionFailAlertVisible() {
+        transactionFailAlert = DriverManager.getInstance().waitForElement(By.xpath("//*[@id='transactionFail']"));
+        return Events.isWebElementVisible(transactionFailAlert);
+    }
+
     public TransactionsPage fillAmountField(String amount) {
-        Events.fillNumberField(amountField,amount);
+        amountField = DriverManager.getInstance().waitForElement(By.xpath("//*[@id='amount']"));
+        Events.fillField(amountField,amount);
+        return this;
+    }
+
+    public TransactionsPage clickTransactionButton() {
+        transactionButton = DriverManager.getInstance().waitForElement(By.xpath("//*[@id='buttonTransaction']"));
+        Events.click(transactionButton);
+        return this;
+    }
+
+    public TransactionsPage fillDateField(String date) {
+        dateField = DriverManager.getInstance().waitForElement(By.xpath("//*[@id='dateSpace']"));
+        Events.fillField(dateField, date);
         return this;
     }
 

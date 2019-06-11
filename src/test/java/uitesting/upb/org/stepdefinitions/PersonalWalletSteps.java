@@ -86,4 +86,13 @@ public class PersonalWalletSteps {
 
     @And("^We fill the 'AmountBS' field with \"([^\"]*)\" on the Transactions page$")
     public void weFillTheAmountBSFieldWithOnTheTransactionsPage(String amount) { transactionsPage = transactionsPage.fillAmountField(amount); }
+
+    @And("^We fill the 'DateField' field with \"([^\"]*)\" on the Transactions page$")
+    public void weFillTheDateFieldFieldWithOnTheTransactionsPage(String date) { transactionsPage = transactionsPage.fillDateField(date); }
+
+    @And("^We click the 'Register Transition' button on the Transaction page$")
+    public void weClickTheRegisterTransitionButtonOnTheTransactionPage() { transactionsPage = transactionsPage.clickTransactionButton(); }
+
+    @Then("^Search the 'transaction fail' alert on the Transactions page$")
+    public void searchTheTransactionFailAlertOnTheTransactionsPage() { Assert.assertTrue(transactionsPage.isTransactionFailAlertVisible()); }
 }
