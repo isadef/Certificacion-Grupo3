@@ -12,10 +12,10 @@ Feature: Manage Income
     And Search the category option "Prueba" on the category selector on the Transactions page
 
   Scenario: create an income and show correct message
-    Given We clicked the 'Expenses' button on the main menu page
-    And  We fill the 'expense name' field with "Prueba" on the Transactions page
+    Given We clicked the 'Income' button on the main menu page
+    And  We fill the 'income name' field with "Prueba" on the Transactions page
     And We select the "Others" values on the category selector on the Transactions page
     And We fill the 'AmountBS' field with "100" on the Transactions page
     And We fill the 'DateField' field with "23/05/2019" on the Transactions page
     And We click the 'Register Transition' button on the Transaction page
-    Then Search the 'transaction fail' alert on the Transactions page
+    Then Search the 'transaction success' alert on the Transactions page

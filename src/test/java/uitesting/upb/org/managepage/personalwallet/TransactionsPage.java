@@ -36,9 +36,17 @@ public class TransactionsPage {
     @FindBy(xpath = "//*[@id='transactionFail']")
     private WebElement transactionFailAlert;
 
+    @FindBy(xpath = "//*[@id='transactionSuccess']")
+    private WebElement transactionSuccessAlert;
+
     public boolean isTransactionFailAlertVisible() {
         transactionFailAlert = DriverManager.getInstance().waitForElement(By.xpath("//*[@id='transactionFail']"));
         return Events.isWebElementVisible(transactionFailAlert);
+    }
+
+    public boolean isTransactionSuccessAlertVisible() {
+        transactionSuccessAlert = DriverManager.getInstance().waitForElement(By.xpath("//*[@id='transactionSuccess']"));
+        return Events.isWebElementVisible(transactionSuccessAlert);
     }
 
     public TransactionsPage fillAmountField(String amount) {

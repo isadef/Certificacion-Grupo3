@@ -100,4 +100,14 @@ public class PersonalWalletSteps {
     public void weClickedTheIncomeButtonOnTheMainMenuPage() {
         transactionsPage = mainMenu.clickIncomeButton();
     }
+
+    @And("^We fill the 'income name' field with \"([^\"]*)\" on the Transactions page$")
+    public void weFillTheIncomeNameFieldWithOnTheTransactionsPage(String name)  {
+        transactionsPage = transactionsPage.fillExpenseNameField(name);
+    }
+
+    @Then("^Search the 'transaction success' alert on the Transactions page$")
+    public void searchTheTransactionSuccessAlertOnTheTransactionsPage() {
+        Assert.assertTrue(transactionsPage.isTransactionSuccessAlertVisible());
+    }
 }
