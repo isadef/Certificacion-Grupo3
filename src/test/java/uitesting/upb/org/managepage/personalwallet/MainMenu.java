@@ -15,6 +15,8 @@ public class MainMenu extends BasePage {
 
     @FindBy(xpath = "//*[@id='settings']")
     private WebElement accountSettingsButton;
+    @FindBy(xpath = "//*[@id='Transfer']")
+    private WebElement transferButton;
 
     public ReportsPage clickReportsButton() {
         Events.click(reportsButton);
@@ -33,5 +35,9 @@ public class MainMenu extends BasePage {
     public AccountSettingsPage clickAccountSettingsButton() {
         Events.click(accountSettingsButton);
         return new AccountSettingsPage();
+    }
+    public TransferPage clickTransferButton() {
+        Events.click(transferButton);
+        return new TransferPage();
     }
 }

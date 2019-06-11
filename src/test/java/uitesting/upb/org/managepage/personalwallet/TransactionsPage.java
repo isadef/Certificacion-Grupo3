@@ -38,6 +38,9 @@ public class TransactionsPage {
     @FindBy(xpath = "//*[@id='transactionSuccess']")
     private WebElement transactionSuccessAlert;
 
+    @FindBy(css = "#exit")
+    private WebElement exitButton;
+
     public boolean isTransactionFailAlertVisible() {
         transactionFailAlert = DriverManager.getInstance().waitForElement(By.xpath("//*[@id='transactionFail']"));
         return Events.isWebElementVisible(transactionFailAlert);
@@ -103,5 +106,11 @@ public class TransactionsPage {
         categorySelector = DriverManager.getInstance().waitForElement(By.xpath("//*[@id='category']"));
         Events.fillField(categorySelector, category);
         return this;
+    }
+
+    public AccountHomeMenu clickExitButton() {
+        exitButton = DriverManager.getInstance().waitForElement(By.cssSelector("#exit"));
+        Events.click(exitButton);
+        return new AccountHomeMenu();
     }
 }
