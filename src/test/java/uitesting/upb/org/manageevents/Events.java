@@ -2,7 +2,10 @@ package uitesting.upb.org.manageevents;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import uitesting.upb.org.webdrivermanager.DriverManager;
+
+import java.util.List;
 
 /**
  * @autor Marcelo Garay
@@ -19,7 +22,19 @@ public class Events {
         searchTextField.sendKeys(text);
     }
 
+    public static WebElement GetWebElementById(String id) {
+        return DriverManager.getInstance().getWebDriver().findElement(By.id(id));
+    }
+
+    public static void SelectOptionInSelect(Select selectElement, String value) {
+        selectElement.selectByValue(value);
+    }
     public static boolean isWebElementVisible(WebElement webElement) {
         return webElement.isDisplayed();
+    }
+
+    public static int GetNumberOfElements(String xpathSelector) {
+        List<WebElement> webElements = DriverManager.getInstance().getWebDriver().findElements(By.xpath(xpathSelector));
+        return webElements.size();
     }
 }

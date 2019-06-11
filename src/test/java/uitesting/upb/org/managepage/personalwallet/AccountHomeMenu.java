@@ -11,24 +11,20 @@ public class AccountHomeMenu extends BasePage {
     private WebElement accountNameInput;
 
     @FindBy(css = "#addAccountButton")
-    private WebElement addButton;
+    private WebElement addAccountButton;
 
     public AccountHomeMenu writeAccountName(String name) {
         Events.fillField(accountNameInput, name);
         return this;
     }
 
-    public AccountHomeMenu pressAddButton() {
-        Events.click(addButton);
+    public AccountHomeMenu clickAddButton() {
+        Events.click(addAccountButton);
         return this;
     }
 
-    public WebElement GetAccountButtonById(String id) {
-        return webDriver.findElement(By.id(id));
-    }
-
     public MainMenu clickButtonById(String id) {
-        Events.click(GetAccountButtonById(id));
+        Events.click(Events.GetWebElementById(id));
         return new MainMenu();
     }
 }

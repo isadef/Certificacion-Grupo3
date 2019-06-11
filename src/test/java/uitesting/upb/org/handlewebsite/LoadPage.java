@@ -17,7 +17,7 @@ public class LoadPage {
 
     public static void main(String[] args) {
         String newAccountName = "Test";
-        MainMenu mainMenu = loadHomeMenu().writeAccountName(newAccountName).pressAddButton().clickButtonById(newAccountName);
+        MainMenu mainMenu = loadHomeMenu().writeAccountName(newAccountName).clickAddButton().clickButtonById(newAccountName);
         ReportsPage reports = mainMenu.clickReportsButton();
     }
 }

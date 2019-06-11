@@ -1,5 +1,6 @@
 package uitesting.upb.org.stepdefinitions;
 
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -14,28 +15,48 @@ public class PersonalWalletSteps {
     private MainMenu mainMenu;
     private ReportsPage reportsPage;
 
-    @Given("^Pagina principal esta cargada$")
+    @Given("^The main page is loaded$")
     public void loadMainPage() {
         accountHomeMenu = LoadPage.loadHomeMenu();
     }
 
-    @Given("^La cuenta \"(.*)\" esta creada$")
-    public void createAccount(String accountName) {
-        accountHomeMenu.writeAccountName(accountName).pressAddButton();
+    @Given("^We filled the account name field on the main page with \"(.*)\"$")
+    public void fillAccountNameField(String accountName) {
+        accountHomeMenu.writeAccountName(accountName);
     }
 
-    @When("^Se presiona el boton \"(.*)\"$")
+    @Given("^We clicked the add button on the main page$")
+    public void clickAddButton() {
+        accountHomeMenu.clickAddButton();
+    }
+
+    @Given("^We clicked the \"(.*)\" button on the main page$")
     public void clickAccountButton(String accountId) {
         mainMenu = accountHomeMenu.clickButtonById(accountId);
     }
 
-    @When("^Se presiona el boton 'Reports'$")
+    @When("^We click 'Reports' button on the main menu page$")
     public void clickReportsButton() {
         reportsPage = mainMenu.clickReportsButton();
     }
 
-    @Then("^El titulo es \"(.*)\"$")
+    @And("^We select 'By category' in the select option on the reports page$")
+    public void selectByCategoryOption() {
+        reportsPage.selectByCategoryOption();
+    }
+
+    @And("^We click the 'Show report' button on the reports page$")
+    public void clickShowReportButton() {
+        reportsPage.clickShowReportButton();
+    }
+
+    @Then("^The title is \"(.*)\"$")
     public void assertPageTitle(String title) {
         Assert.assertEquals(reportsPage.getTitle(), title);
+    }
+
+    @Then("^The table has \"[0-9]+\" rows$")
+    public void assertTableRows(int rows) {
+        Assert.assertEquals(reportsPage.getNumberOfRows(), rows);
     }
 }
