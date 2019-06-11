@@ -10,6 +10,10 @@ public class MainMenu extends BasePage {
     private WebElement reportsButton;
     @FindBy(xpath = "//*[@id='Expenses']")
     private WebElement expensesButton;
+    @FindBy(xpath = "//*[@id='Transfer']")
+    private WebElement transferButton;
+    @FindBy(xpath = "//*[@id='Income']")
+    private WebElement incomeButton;
 
     public ReportsPage clickReportsButton() {
         Events.click(reportsButton);
@@ -20,4 +24,10 @@ public class MainMenu extends BasePage {
         Events.click(expensesButton);
         return new TransactionsPage();
     }
+
+    public TransferPage clickTransferButton() {
+        Events.click(transferButton);
+        return new TransferPage();
+    }
+
 }

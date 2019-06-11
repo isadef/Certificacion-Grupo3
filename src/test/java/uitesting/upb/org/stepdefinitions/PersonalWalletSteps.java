@@ -7,16 +7,15 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.testng.Assert;
 import uitesting.upb.org.handlewebsite.LoadPage;
-import uitesting.upb.org.managepage.personalwallet.AccountHomeMenu;
-import uitesting.upb.org.managepage.personalwallet.MainMenu;
-import uitesting.upb.org.managepage.personalwallet.ReportsPage;
-import uitesting.upb.org.managepage.personalwallet.TransactionsPage;
+import uitesting.upb.org.managepage.personalwallet.*;
 
 public class PersonalWalletSteps {
     private AccountHomeMenu accountHomeMenu;
     private MainMenu mainMenu;
     private ReportsPage reportsPage;
     private TransactionsPage transactionsPage;
+    private TransferPage transferPage;
+    private Header header;
 
     @Given("^The main page is loaded$")
     public void loadMainPage() {
@@ -95,4 +94,40 @@ public class PersonalWalletSteps {
 
     @Then("^Search the 'transaction fail' alert on the Transactions page$")
     public void searchTheTransactionFailAlertOnTheTransactionsPage() { Assert.assertTrue(transactionsPage.isTransactionFailAlertVisible()); }
+
+    @Given("^We Filled the account name field on the main page with \"([^\"]*)\"$")
+    public void weFilledTheAccountNameFieldOnTheMainPageWith(String accountName) throws Throwable {
+        accountHomeMenu.writeAccountName(accountName);
+    }
+
+    @Then("^We click the 'Exit' button on the header page$")
+    public void weClickTheExitButtonOnTheHeaderPage() {
+        header = header.clickExitButton();
+    }
+
+    @Given("^We clicked the 'Transfer' Button on the main menu page$")
+    public void weClickedTheTransferButtonOnTheMainMenuPage() {
+        transferPage = mainMenu.clickTransferButton();
+    }
+
+    @And("^we fill 'amount in BS' text field with \"([^\"]*)\" on transfer page$")
+    public void weFillAmountInBSTextFieldWithOnTransferPage(String amount) throws Throwable {
+        transferPage = transferPage.fillAmountTransferTextField(amount);
+    }
+
+    @And("^We click the 'Transfer' Button$")
+    public void weClickTheTransferButton() {
+        transferPage = transferPage.clickTransferButton();
+    }
+
+    @Then("^Search the 'Error Message' fail alert on transfer page$")
+    public void searchTheErrorMessageFailAlertOnTransferPage() {
+        Assert.assertTrue(transferPage.isTransferErrorMessageVisible());
+    }
+
+    @And("^We select the \"([^\"]*)\" value on 'Destination Account' selector on Transfer Pager$")
+    public void weSelectTheValueOnDestinationAccountSelectorOnTransferPager(String accountDestination) throws Throwable {
+        transferPage = transferPage.selectAccountDestination(accountDestination);
+    }
+
 }
