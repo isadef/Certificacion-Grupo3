@@ -95,4 +95,9 @@ public class PersonalWalletSteps {
 
     @Then("^Search the 'transaction fail' alert on the Transactions page$")
     public void searchTheTransactionFailAlertOnTheTransactionsPage() { Assert.assertTrue(transactionsPage.isTransactionFailAlertVisible()); }
+
+    @Given("^We clicked the 'Income' button on the main menu page$")
+    public void weClickedTheIncomeButtonOnTheMainMenuPage() {
+        transactionsPage = mainMenu.clickIncomeButton();
+    }
 }
