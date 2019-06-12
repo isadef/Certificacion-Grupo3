@@ -7,10 +7,10 @@ import uitesting.upb.org.manageevents.Events;
 import uitesting.upb.org.managepage.BasePage;
 
 public class AccountHomeMenu extends BasePage {
-    @FindBy(css = "#accountNameInput")
+    @FindBy(id = "accountNameInput")
     private WebElement accountNameInput;
 
-    @FindBy(css = "#addAccountButton")
+    @FindBy(id = "addAccountButton")
     private WebElement addAccountButton;
 
     public AccountHomeMenu writeAccountName(String name) {

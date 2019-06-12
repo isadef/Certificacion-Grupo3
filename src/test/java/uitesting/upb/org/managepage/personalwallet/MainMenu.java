@@ -6,7 +6,7 @@ import uitesting.upb.org.manageevents.Events;
 import uitesting.upb.org.managepage.BasePage;
 
 public class MainMenu extends BasePage {
-    @FindBy(xpath = "//a[@id='Report']")
+    @FindBy(id = "Report")
     private WebElement reportsButton;
     @FindBy(xpath = "//*[@id='Expenses']")
     private WebElement expensesButton;

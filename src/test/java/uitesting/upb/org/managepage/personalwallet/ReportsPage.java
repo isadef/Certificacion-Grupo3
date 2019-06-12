@@ -11,10 +11,10 @@ public class ReportsPage extends BasePage {
     @FindBy(css = "h1.text-center")
     private WebElement title;
 
-    @FindBy(css = "#reportType")
+    @FindBy(id = "reportType")
     private WebElement reportTypeSelect;
 
-    @FindBy(css = "#showReport")
+    @FindBy(id = "showReport")
     private WebElement showReportButton;
 
     public String getTitle() {

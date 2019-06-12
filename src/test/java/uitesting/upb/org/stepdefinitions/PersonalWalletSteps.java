@@ -22,32 +22,32 @@ public class PersonalWalletSteps {
         accountHomeMenu = LoadPage.loadHomeMenu();
     }
 
-    @Given("^We filled the account name field on the main page with \"(.*)\"$")
+    @Given("^Fill account name field on 'main' page with \"(.*)\"$")
     public void fillAccountNameField(String accountName) {
         accountHomeMenu.writeAccountName(accountName);
     }
 
-    @Given("^We clicked the add button on the main page$")
+    @Given("^Click add button on 'main' page$")
     public void clickAddButton() {
         accountHomeMenu.clickAddButton();
     }
 
-    @Given("^We clicked the \"(.*)\" button on the main page$")
+    @Given("^Click \"(.*)\" button on 'main' page$")
     public void clickAccountButton(String accountId) {
         mainMenu = accountHomeMenu.clickButtonById(accountId);
     }
 
-    @When("^We click 'Reports' button on the main menu page$")
+    @When("^Click 'Reports' button on 'main menu' page$")
     public void clickReportsButton() {
         reportsPage = mainMenu.clickReportsButton();
     }
 
-    @And("^We select 'By category' in the select option on the reports page$")
+    @And("^Select 'By category' in the select option on 'reports' page$")
     public void selectByCategoryOption() {
         reportsPage.selectByCategoryOption();
     }
 
-    @And("^We click the 'Show report' button on the reports page$")
+    @And("^Click 'Show report' button on 'reports' page$")
     public void clickShowReportButton() {
         reportsPage.clickShowReportButton();
     }
